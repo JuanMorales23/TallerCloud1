@@ -8,11 +8,7 @@ import javax.validation.constraints.Positive;
 import java.util.Date;
 
 @Data
-@Entity
-@Table(name = "project_task")
 public class ProjectTask {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty(message = "No puede estar en blanco")
     private Long id;
     @NotEmpty(message = "No puede estar en blanco")
@@ -28,7 +24,5 @@ public class ProjectTask {
     private Date endDate;
     @Column(updatable = false)
     private String projectIdentifier;
-    @ManyToOne
-    @JoinColumn(name = "backlog_id")
     private Backlog backlog;
 }
