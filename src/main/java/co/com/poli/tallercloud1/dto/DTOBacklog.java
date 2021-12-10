@@ -9,9 +9,9 @@ public class DTOBacklog extends Backlog {
     public Backlog convertInBacklog(){
         Backlog backlog = new Backlog();
         backlog.setId(id);
-        backlog.setProjectTask(projectTask);
-        backlog.setProject(project);
-        backlog.setProjectTask(projectTask);
+        //backlog.setProjectTask(projectTask);
+        //backlog.setProject(project);
+        //backlog.setProjectTask(projectTask);
 
         return backlog;
     }
@@ -19,8 +19,8 @@ public class DTOBacklog extends Backlog {
     public void convertInDTO(Backlog backlog){
         id = backlog.getId();
         projectIdentifier = backlog.getProjectIdentifier();
-        project = backlog.getProject();
-        projectTask = backlog.getProjectTask();
+        //project = backlog.getProject();
+        //projectTask = backlog.getProjectTask();
     }
 
 

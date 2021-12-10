@@ -15,6 +15,11 @@ public class BacklogController {
     @Autowired
     BacklogService backlogService;
 
+    @GetMapping("/hola")
+    public String hola(){
+        return "Hola";
+    }
+
     @GetMapping
     public List<Backlog> findAll(){
         return backlogService.listAll();
@@ -34,5 +39,4 @@ public class BacklogController {
     public Backlog findById(@RequestBody Long id){
         return backlogService.findById(id);
     }
-
 }

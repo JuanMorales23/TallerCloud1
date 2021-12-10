@@ -21,9 +21,10 @@ public class ProjectController {
         return projectService.listAll();
     }
 
-    @PostMapping(value = "/create")
-    public DTOProject create (@RequestBody DTOProject dtoProject){
-        return projectService.create(dtoProject);
+    @PostMapping("/create")
+    public void create (@RequestBody String nada){
+        System.out.println("xd");
+        //return projectService.create(dtoProject);
     }
 
     @DeleteMapping
