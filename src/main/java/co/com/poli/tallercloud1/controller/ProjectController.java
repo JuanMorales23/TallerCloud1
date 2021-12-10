@@ -22,12 +22,12 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public void create (@RequestBody String nada){
+    public DTOProject create (@RequestBody DTOProject dtoProject){
         System.out.println("xd");
-        //return projectService.create(dtoProject);
+        return projectService.create(dtoProject);
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     public void delete (@RequestBody DTOProject dtoProject){
         projectService.delete(dtoProject);
     }
