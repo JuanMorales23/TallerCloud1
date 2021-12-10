@@ -1,7 +1,9 @@
 package co.com.poli.tallercloud1.dto;
 
 import co.com.poli.tallercloud1.entity.Backlog;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DTOBacklog extends Backlog {
 
     public Backlog convertInBacklog(){

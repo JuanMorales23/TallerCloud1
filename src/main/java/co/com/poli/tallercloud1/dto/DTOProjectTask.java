@@ -2,7 +2,9 @@ package co.com.poli.tallercloud1.dto;
 
 import co.com.poli.tallercloud1.entity.Backlog;
 import co.com.poli.tallercloud1.entity.ProjectTask;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DTOProjectTask extends ProjectTask {
 
     public ProjectTask convertInProjectTask(){

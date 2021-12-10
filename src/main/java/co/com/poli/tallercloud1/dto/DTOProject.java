@@ -1,7 +1,9 @@
 package co.com.poli.tallercloud1.dto;
 
 import co.com.poli.tallercloud1.entity.Project;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class DTOProject extends Project {
 
     public Project convertInProject(){

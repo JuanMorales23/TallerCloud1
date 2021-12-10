@@ -1,5 +1,6 @@
 package co.com.poli.tallercloud1.services;
 
+import co.com.poli.tallercloud1.dto.DTOBacklog;
 import co.com.poli.tallercloud1.entity.Backlog;
 import co.com.poli.tallercloud1.repository.BacklogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.List;
 @Service
 public class BacklogServiceImpl implements BacklogService {
     @Autowired
-    BacklogRepository backlogRepository;
+    private BacklogRepository backlogRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -21,19 +22,19 @@ public class BacklogServiceImpl implements BacklogService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void create(Backlog backlog) {
-        backlogRepository.save(backlog);
+    public DTOBacklog create(DTOBacklog dtoBacklog) {
+        return backlogRepository.save(dtoBacklog);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(Backlog backlog) {
-        backlogRepository.delete(backlog);
+    public void delete(DTOBacklog dtoBacklog) {
+        backlogRepository.delete(dtoBacklog);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Backlog findById(Backlog backlog) {
-        return backlogRepository.findById(backlog.getId()).orElse(null);
+    public Backlog findById(Long id) {
+        return backlogRepository.findById(id).orElse(null);
     }
 }

@@ -1,5 +1,6 @@
 package co.com.poli.tallercloud1.services;
 
+import co.com.poli.tallercloud1.dto.DTOProjectTask;
 import co.com.poli.tallercloud1.entity.ProjectTask;
 import co.com.poli.tallercloud1.repository.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,29 +12,29 @@ import java.util.List;
 @Service
 public class ProjectTaskServiceImpl implements ProjectTaskService {
     @Autowired
-    ProjectTaskRepository projectTaskRepository;
+    private ProjectTaskRepository projectTaskRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<ProjectTask> findAll() {
+    public List<ProjectTask> listAll() {
         return projectTaskRepository.findAll();
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void create(ProjectTask projectTask) {
-        projectTaskRepository.save(projectTask);
+    public DTOProjectTask create(DTOProjectTask dtoProjectTask) {
+        return projectTaskRepository.save(dtoProjectTask);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void delete(ProjectTask projectTask) {
-        projectTaskRepository.delete(projectTask);
+    public void delete(DTOProjectTask dtoProjectTask) {
+        projectTaskRepository.delete(dtoProjectTask);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public ProjectTask findById(ProjectTask projectTask) {
-        return projectTaskRepository.findById(projectTask.getId()).orElse(null);
+    public ProjectTask findById(Long id) {
+        return projectTaskRepository.findById(id).orElse(null);
     }
 }

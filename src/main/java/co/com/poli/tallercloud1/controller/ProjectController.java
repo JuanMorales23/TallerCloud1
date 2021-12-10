@@ -1,5 +1,6 @@
 package co.com.poli.tallercloud1.controller;
 
+import co.com.poli.tallercloud1.dto.DTOProject;
 import co.com.poli.tallercloud1.entity.Project;
 import co.com.poli.tallercloud1.services.BacklogService;
 import co.com.poli.tallercloud1.services.ProjectService;
@@ -17,12 +18,22 @@ public class ProjectController {
 
     @GetMapping
     public List<Project> findAll(){
-        return projectService.findAll();
+        return projectService.listAll();
     }
 
-    @PostMapping
-    public Project create (@RequestBody Project project){
-        return projectService.create(project);
+    @PostMapping(value = "/create")
+    public DTOProject create (@RequestBody DTOProject dtoProject){
+        return projectService.create(dtoProject);
+    }
+
+    @DeleteMapping
+    public void delete (@RequestBody DTOProject dtoProject){
+        projectService.delete(dtoProject);
+    }
+
+    @GetMapping
+    public Project findById(@RequestBody Long id){
+        return projectService.findById(id);
     }
 
 }

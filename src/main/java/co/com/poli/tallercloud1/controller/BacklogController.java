@@ -1,5 +1,6 @@
 package co.com.poli.tallercloud1.controller;
 
+import co.com.poli.tallercloud1.dto.DTOBacklog;
 import co.com.poli.tallercloud1.entity.Backlog;
 import co.com.poli.tallercloud1.services.BacklogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,17 +12,27 @@ import java.util.List;
 @RestController
 @RequestMapping("/backlog")
 public class BacklogController {
-
+    @Autowired
     BacklogService backlogService;
 
     @GetMapping
     public List<Backlog> findAll(){
-        return backlogService.findAll();
+        return backlogService.listAll();
     }
 
     @PostMapping
-    public Backlog create (@RequestBody Backlog backlog){
-        return backlogService.create(backlog);
+    public DTOBacklog create (@RequestBody DTOBacklog dtoBacklog){
+        return backlogService.create(dtoBacklog);
+    }
+
+    @DeleteMapping
+    public void delete(@RequestBody DTOBacklog dtoBacklog){
+        backlogService.delete(dtoBacklog);
+    }
+
+    @GetMapping
+    public Backlog findById(@RequestBody Long id){
+        return backlogService.findById(id);
     }
 
 }

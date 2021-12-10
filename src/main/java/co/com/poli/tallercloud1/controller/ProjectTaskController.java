@@ -1,9 +1,9 @@
 package co.com.poli.tallercloud1.controller;
 
+import co.com.poli.tallercloud1.dto.DTOProjectTask;
 import co.com.poli.tallercloud1.entity.Project;
-import co.com.poli.tallercloud1.services.ProjectService;
+import co.com.poli.tallercloud1.entity.ProjectTask;
 import co.com.poli.tallercloud1.services.ProjectTaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,17 +12,25 @@ import java.util.List;
 @RequestMapping("/task")
 public class ProjectTaskController {
 
-
     ProjectTaskService projectTaskService;
 
     @GetMapping
-    public List<Project> findAll(){
-        return projectTaskService.findAll();
+    public List<ProjectTask> findAll(){
+        return projectTaskService.listAll();
     }
 
-    @PostMapping
-    public Project create (@RequestBody Project project){
-        return projectTaskService.create(project);
+    @PostMapping(value = "")
+    public DTOProjectTask create (@RequestBody DTOProjectTask dtoProjectTask){
+        return projectTaskService.create(dtoProjectTask);
     }
 
+    @DeleteMapping
+    public void delete (@RequestBody DTOProjectTask dtoProjectTask){
+        projectTaskService.delete(dtoProjectTask);
+    }
+
+    @GetMapping
+    public ProjectTask findById (@RequestBody Long id){
+        return projectTaskService.findById(id);
+    }
 }
