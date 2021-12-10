@@ -14,21 +14,21 @@ public class ProjectTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotEmpty(message = "No puede estar en blanco")
-    private Long id;
+    protected Long id;
     @NotEmpty(message = "No puede estar en blanco")
-    private String name;
+    protected String name;
     @NotEmpty(message = "No puede estar en blanco")
-    private String summary;
-    private String acceptanceCriteria;
+    protected String summary;
+    protected String acceptanceCriteria;
 
-    private String status;
+    protected String status;
     @Positive(message = "El precio debe ser mayor que cero")
-    private Double hours;
-    private Date startDate;
-    private Date endDate;
+    protected Double hours;
+    protected Date startDate;
+    protected Date endDate;
     @Column(updatable = false)
-    private String projectIdentifier;
+    protected String projectIdentifier;
     @ManyToOne
     @JoinColumn(name = "backlog_id")
-    private Backlog backlog;
+    protected Backlog backlog;
 }
