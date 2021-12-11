@@ -1,5 +1,6 @@
 package co.com.poli.taller.entities;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "backlog")
+@Builder
 public class Backlog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +28,8 @@ public class Backlog {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "backlog")
     //@JoinColumn(name = "project_task_id")
     protected List<ProjectTask> projectTask;
+
+    public Backlog() {
+
+    }
 }
