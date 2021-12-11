@@ -15,7 +15,6 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "project_task")
-@Builder
 public class ProjectTask {
 
     @Id
@@ -44,10 +43,9 @@ public class ProjectTask {
     @Column(updatable = false)
     protected String projectIdentifier;
 
-    @JsonBackReference
+    //@JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "backlog_id")
+    //@JoinColumn(name = "backlog_id")
     protected Backlog backlog;
-
 
 }

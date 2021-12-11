@@ -21,7 +21,6 @@ public class ProjectTaskController {
 
     @PostMapping()
     public ProjectTask create (@RequestBody ProjectTask projectTask){
-        System.out.println("xd");
         return projectTaskService.create(projectTask);
     }
 
@@ -33,5 +32,12 @@ public class ProjectTaskController {
     @GetMapping("/{id}")
     public ProjectTask findById(@PathVariable("id") Long id){
         return projectTaskService.findById(id);
+    }
+
+    @GetMapping(value = "/task/hours/project/{projectIdentifier}")
+    public Double getProjectHours(@PathVariable("projectIdentifier") Long projectId){
+
+
+        return projectTaskService.getProjectHours(projectId);
     }
 }

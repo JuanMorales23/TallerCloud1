@@ -1,6 +1,7 @@
 package co.com.poli.taller.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Data;
@@ -23,14 +24,14 @@ public class Backlog {
     @NotNull
     protected String projectIdentifier;
 
-    @JsonManagedReference
+    //@JsonManagedReference
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_id")
+    //@JoinColumn(name = "project_id")
     protected Project project;
 
-    @JsonManagedReference
+    //@JsonBackReference
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_task_id")
+    //@JoinColumn(name = "project_task_id")
     protected List<ProjectTask> projectTask;
 
 }

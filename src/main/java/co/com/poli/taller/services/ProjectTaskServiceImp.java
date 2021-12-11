@@ -32,4 +32,14 @@ public class ProjectTaskServiceImp implements ProjectTaskService{
     public ProjectTask findById(Long id) {
         return projectTaskRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public Double getProjectHours(Long projectId){
+        Double hours=0.0;
+        List<ProjectTask> projectTask = projectTaskRepository.findAll();
+        for (int i=0; i<projectTask.size(); i++){
+                hours+=projectTask.get(i).getHours();
+        }
+        return hours;
+    }
 }

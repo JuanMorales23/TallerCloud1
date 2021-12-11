@@ -2,6 +2,7 @@ package co.com.poli.taller.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Data;
 
@@ -35,8 +36,8 @@ public class Project {
 
     protected Date endDate;
 
-    @JsonBackReference
+    //@JsonManagedReference
     @OneToOne
-    @JoinColumn(name = "backlog_id")
+    //@JoinColumn(name = "backlog_id")
     protected Backlog backlog;
 }

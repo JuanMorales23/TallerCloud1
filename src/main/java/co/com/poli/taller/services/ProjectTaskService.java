@@ -9,4 +9,5 @@ public interface ProjectTaskService {
     List<ProjectTask> findAll( );
     void delete(Long id);
     ProjectTask findById(Long id);
+    Double getProjectHours(Long id);
 }
