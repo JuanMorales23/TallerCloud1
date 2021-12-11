@@ -1,5 +1,6 @@
 package co.com.poli.taller.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -40,7 +41,8 @@ public class ProjectTask {
     @Column(updatable = false)
     protected String projectIdentifier;
 
+    @JsonBackReference
     @ManyToOne
-    //@JoinColumn(name = "backlog_id")
+    @JoinColumn(name = "backlog_id")
     protected Backlog backlog;
 }

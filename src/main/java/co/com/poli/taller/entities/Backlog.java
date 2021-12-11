@@ -1,5 +1,6 @@
 package co.com.poli.taller.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,11 +20,13 @@ public class Backlog {
     @NotNull
     protected String projectIdentifier;
 
+    @JsonManagedReference
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //@JoinColumn(name = "project_id")
+    @JoinColumn(name = "project_id")
     protected Project project;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "backlog")
-    //@JoinColumn(name = "project_task_id")
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "project_task_id")
     protected List<ProjectTask> projectTask;
 }
